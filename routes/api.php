@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/test/{id}', function ($id) {
+    return response()->json(
+        [
+            'id' => $id
+        ],
+    );
+})->where('id', '[0-9+]');
