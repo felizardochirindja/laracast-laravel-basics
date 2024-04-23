@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Employer;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,12 +12,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
+        Schema::create('job_listings', function (Blueprint $table) {
             $table->charset('utf8mb4');
             $table->collation('utf8mb4_0900_ai_ci');
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->datetime('created_at');
+            $table->id();
+            $table->foreignIdFor(Employer::class);
+            $table->foreign('employer_id')->references('id')->on('employers');
+            $table->string('title');
+            $table->string('salary');
+            $table->datetimes();
         });
     }
 
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('job_listings');
     }
 };
