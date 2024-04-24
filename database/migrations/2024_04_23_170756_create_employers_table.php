@@ -15,7 +15,7 @@ return new class extends Migration
             $table->charset('utf8mb4');
             $table->collation('utf8mb4_0900_ai_ci');
             $table->id();
-            $table->string('name');
+            $table->string('name')->index();
             $table->datetimes();
         });
     }

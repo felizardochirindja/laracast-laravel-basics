@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Employer::class);
             $table->foreign('employer_id')->references('id')->on('employers');
-            $table->string('title');
+            $table->string('title')->index();
             $table->string('salary');
             $table->datetimes();
         });

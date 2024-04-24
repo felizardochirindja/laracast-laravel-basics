@@ -15,12 +15,12 @@ return new class extends Migration
             $table->charset('utf8mb4');
             $table->collation('utf8mb4_0900_ai_ci');
             $table->id();
-            $table->string('first_name');
+            $table->string('first_name')->index();
             $table->string('last_name');
-            $table->string('email')->unique();
-            $table->dateTime('email_verified_at');
+            $table->string('email')->unique()->index();
+            $table->dateTime('email_verified_at')->index();
             $table->string('password');
-            $table->rememberToken();
+            $table->rememberToken()->nullable(false);
             $table->datetimes();
         });
     }
